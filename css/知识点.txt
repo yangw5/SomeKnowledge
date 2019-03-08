@@ -1,0 +1,33 @@
+1:文档流布局的概念:
+      	将窗体自上而下分成一行行， 并在每行中按从左至右的顺序排放元素，即为文档流
+	脱离文档流的3种方法:浮动，绝对定位， 固定定位
+	float:其他盒子看不见被float的元素，但是其他盒子里的文本看得见。
+	absolute:旁边的盒子无视了蓝色div的存在，也是顶着左边边框定位。但是~ 文本也无视了蓝色div的存在，顶着左边边框定位！
+	fixed:与absolute类似.
+	relative:半脱离文档流的方法
+2:块级元素,行内元素: display  宽度和高度限制
+3:盒子模型(标准盒子模型和IE盒子模型)(在 CSS的标准盒子模型中，width 和 height 指的是内容区域的宽度和高度。增加内边距、边框和外边距不会影响内容区域的尺寸，但是会增加元素框的总尺寸。IE盒子模型中，width 和 height 指的是内容区域+border+padding的宽度和高度。) 
+4:border-sizing(content-box(只是内容)|border-box(没有margin)|inherit(继承父级);),
+	content-box，border和padding不计算入width之内
+	padding-box，padding计算入width内
+	border-box，border和padding计算入width之内，其实就是怪异模式了~
+5:清除浮动:情况:子浮动,父不能被撑开,导致父级的一些样式无法显示.
+	方法1:父设置高度
+		2:父结束前,在父里面或浮动子元素后面,新加div,设置clear:both
+	3:父 overflow:hidden(推荐)
+		4:内墙法：
+6:内嵌样式(style),内联样式(<style></style>) ,外联样式(link /@import  (有利于SEO(搜索引擎优化),有利于加载(分线程),便于维护)) 
+7:优先级,
+(（外部样式）External style sheet <（内部样式）Internal style sheet <（内联样式）Inline style)
+(ID选择器的特殊性值，加0,1,0,0。
+类选择器、属性选择器或伪类，加0,0,1,0。
+元素和伪元素，加0,0,0,1。
+通配选择器*对特殊性没有贡献，即0,0,0,0。
+最后比较特殊的一个标志!important（权重），它没有特殊性值，但它的优先级是最高的，为了方便记忆，可以认为它的特殊性值为1,0,0,0,0。)
+8:html加载原理(自上而下,加载与渲染同时进行,遇到script 停止渲染 script下载完运行完继续渲染)
+9:text-overflow,nth-child和nth-of-type,居中(line-hieight),white-space:nowrap
+10:弹性布局
+11:css兼容(-webkit-（safari chrome）、
+-moz-（Firefox）、
+-ms-（IE）、
+-o-（opera）；)

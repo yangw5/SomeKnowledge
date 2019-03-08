@@ -1,0 +1,77 @@
+ CommonJS 社区的 Modules 1.1.1 规范
+
+ NodeJS 的 Modules 规范
+
+ RequireJS 提出的 AMD 规范(一个模块就是一个文件  factory require exports module  module.exports)
+
+
+
+
+seajs
+js模块加速器(一切皆是模块)
+
+JS 模块（其他类型的模块可以转换为 JS 模块）：
+模块是一段 JavaScript 代码，具有统一的基本书写格式。
+模块之间通过基本交互规则，能彼此引用，协同工作。
+  seajs模块加载器的实现方法是动态的生成一个script，然后对这个script设置async属性。
+ 定义:define定义模块.define可以接收的参数分别是模块ID，依赖模块数组及工厂函数
+(
+工厂函数factory解析
+
+工厂函数是模块的主体和重点。在只传递一个参数给define时（推荐写法），这个参数就是工厂函数，此时工厂函数的三个参数分别是：
+1.require——模块加载函数，用于记载依赖模块。
+2.exports——接口点，将数据或方法定义在其上则将其暴露给外部调用。
+3.module——模块的元数据。
+这三个参数可以根据需要选择是否需要显示指定。
+下面说一下module。module是一个对象，存储了模块的元信息，具体如下：
+1.module.id——模块的ID。
+2.module.dependencies——一个数组，存储了此模块依赖的所有模块的ID列表。
+3.module.exports——与exports指向同一个对象。)
+
+载入:require,SeaJS提供了三个载入模块的API，分别是seajs.use，require和require.async，
+(1:  seajs.use主要用于载入入口模块,
+  2:  require是SeaJS主要的模块加载方法，当在一个模块中需要用到其它模块时一般用require加载：
+     3:想要某个js文件在用到时才下载，可以使用require.async：实现了JavaScript代码的按需加载。
+)
+ 全局配置:SeaJS提供了一个seajs.config方法可以设置全局配置
+
+document.all.ifrmname.document.location.reload()
+
+document.frames("refreshAlarm").location.reload(true); 
+document.frames("refreshAlarm").document.location.reload(true); 
+document.frames("refreshAlarm").document.location="http://www.jb51.net/"; 
+document.frames("refreshAlarm").src="http://www.jb51.net/"; 
+注意区别：document.all.refreshAlarm 或 document.frames("refreshAlarm") 得到的是http://www.jb51.net/页面中那个iframe标签，所以对src属性操作有用。
+document.frames("refreshAlarm").document得到iframe里面的内容，也就是"http://www.jb51.net/"中的内容。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+lui_dialog_container clearfloat 取消border
+table width 100%
+
+事件失效
+
+
+盒子模型:
+box-sizing:border-box;
+
+ document.getElementById("p").className.replace(/(?:^|\s)addp1(?!\S)/g,"")
+
+

@@ -1,0 +1,214 @@
+一：css2(层叠样式表)
+	有外部样式 内部样式 内联样式
+	多重样式优先级：
+		内联样式）Inline style > （内部样式）Internal style sheet >（外部样式）External style sheet > 浏览器默认样式
+
+	CSS三大特性—— 继承、 优先级和层叠
+		继承：即子类元素继承父类的样式;
+		优先级：是指不同类别样式的权重比较;
+		层叠：是说当数量相同时，通过层叠(后者覆盖前者)的样式。
+
+	选择器：通用选择器（*），元素(标签/类型)选择器，ID选择器（#） 类选择器（.），属性选择器（【】），组合选择器 ，群组选择器 （，）， 伪类（：），伪元素选择器（：before/after），内联样式，!important ， 后代选择器（空格）， 子代选择器（>） ，毗邻/兄弟选择器（+）， 3+：关联选择器（~(后面的所有元素)），匹配（^）……  
+
+	优先级关系：
+	 1. 内联样式表的权值最高 1000；
+ 	 2. ID 选择器的权值为 100
+	 3. Class 类选择器的权值为 10
+ 	 4. HTML 标签选择器的权值为 1
+	选择器的权值加到一起，大的优先；如果权值相同，后定义的优先 
+	（权值的大小跟选择器的类型和数量有关，样式的优先级跟样式的定义顺序有关）
+
+！important > 内联样式 > ID 选择器 > 类选择器 = 属性选择器 = 伪类选择器 > 标签选择器 = 伪元素选择器 > 通配选择器 > 浏览器自定义或继承
+
+	属性：background(url position 背景自适应 size:100%) text(text-decoration text-transform text-index line-height letter-spacing text-shadow) font(family size style weight em(16px)) 链接（link visited hover active）列表ui/li（list-style-type/image）显示隐藏（Visibility:hidden display） cursor
+
+	盒子模型（标准盒模型和IE盒模型：content不同，ie的content包含了borde和padding）：margin border padding content(height width（min max）) 边框outline 重叠边距（大的覆盖小的）
+	标签的默认样式（
+	ul:padding-left:40px
+）
+
+	块级（可控） 内联（宽度(width)、高度(height)、内边距的top/bottom(padding-top/padding-bottom)和外边距的top/bottom(margin-top/margin-bottom)都不可改变）inline-block -- 显示为内联块元素，表现为同行显示并可修改宽高内外边距等属性
+
+	浮动（float 浮动元素的外边距也不会合并  盒子塌陷　浮动与定位的位置优先级：(fixed == absolute) > float > relative > static） 定位（position  　position的值为absolute、fixed的元素脱离文档流，static、relative没有脱离文档流 脱离文档流的元素都是块级元素。）脱离文档流(标签默认排列样式 上下左右) 清除浮动（clear） 流式布局
+	
+	弹性布局:（容器 项目）display:flex   Flex布局以后，子元素的float、clear和vertical-align属性将失效
+(flex-direction　　容器内项目的排列方向(默认横向排列)　　
+flex-wrap　　容器内项目换行方式
+flex-flow　　以上两个属性的简写方式
+justify-content　　项目在主轴上的对齐方式
+align-items　　项目在交叉轴上如何对齐
+align-content　　定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。)
+（① 给父容器添加display: flex/inline-flex;属性，即可使容器内容采用弹性布局显示，而不遵循常规文档流的显示方式；
+
+② 容器添加弹性布局后，仅仅是容器内容采用弹性布局，而容器自身在文档流中的定位方式依然遵循常规文档流；
+
+③ display:flex; 容器添加弹性布局后，显示为块级元素；
+
+display:inline-flex; 容器添加弹性布局后，显示为行级元素；
+
+④ 设为 Flex布局后，子元素的float、clear和vertical-align属性将失效。但是position属性，依然生效。）
+
+居中方法（
+1：
+   display: flex;
+    justify-content:center;
+    align-items:Center;
+2：  display: table-cell;
+    vertical-align: middle;
+    text-align: center;  
+3：  position: absolute;
+            top:50%;
+            left:50%;
+            width:100%;
+            transform:translate(-50%,-50%);
+            text-align: center;
+4:  display: -webkit-box;//盒子显示
+    -webkit-box-pack:center;
+    -webkit-box-align:center;
+    -webkit-box-orient: vertical;
+    text-align: center
+5： transform
+）
+
+	溢出 overflow（ellipsis hidden） 
+
+
+	布局 居中 transform（2D转换）
+
+	vertical-align(元素垂直对齐方式 基线)(vertical-align影响inline-level元素和table-cell元素垂直方向上的布局  baseline, top line, middle line, bottom line) linebox baseline
+(（1）有处于正常流的内容，baseline为最后一个linebox的baseline。(linebox的baseline后面有说到）
+（2）overflow不为visible，baseline为margin-box的下边界
+（3）没有内容，baseline为margin-box的下边界)
+(inline元素的baseline，为内容盒content-box里面文本框的基线。
+那如果content-box里面有两行文本框呢？
+哈哈，没有这样的情况啦，inline元素的文本框只有一行。)
+(普通文本框的baseline，为里面文本的基线，基线的位置取决font-size和line-height)
+(linebox的baseline以各个元素中最下面的baseline为基准，就是说谁的baseline在最下面，就以谁的baseline为基准进行对齐。)
+
+	透明 opacity(不占位) filter（占位）
+
+	媒体类型 @media
+
+二：css3:
+	选择器、盒模型、背景和边框、文字特效、2D/3D转换、动画、多列布局和用户界面。
+	1:css边框（border-radius、box-shadow、border-image）
+	2：css3背景（background-image，background-position和background-repeat）background-size backgrond-origin background-clip
+（ background-image: url(img_flwr.gif), url(paper.gif);
+    background-position: right bottom, left top;
+    background-repeat: no-repeat, repeat;
+    padding: 15px;）
+	3：CSS3渐变 （线性渐变 径向渐变 至少两种颜色） linear-gradient（样式（left/angle deg) color1 color2...）,radial-gradient(center, shape size, start-color, ..., last-color);
+	4:css3文本效果 (text-shadow、box-shadow、text-overflow(ellipsis(省略)、clip（裁剪）)、word-wrap、word-break)
+	5:字体
+	6:2D
+	7:3D（rotateX(80deg)） rotateY() rotateZ()
+
+
+	8:css3过渡 (transition必须规定2项内容width、height  时间) transform
+	9：CSS3动画 @keyframes（animation需要：动画的名称，即由@keyframes规定的名称
+动画的总时长，即动画完成需要的时间）from ->to(from（最开始的状态）和to(最终状态)。)
+	变形(transform)，过渡(transition)和动画(animation)。
+	transform(旋转(rotate),扭曲(skew)，缩放（scale)、移动(translate)和矩阵变形matrix。)
+	transition:渐变属性 时间 速度 延迟时间
+	animation 名称 时间 速度曲线 延迟 播放次数 反向播放否（name duration timing-function delay iteration-count direction;）
+
+	动画播放状态animation-play-state 动画填充模式 animation-fill-mode
+
+ 通过 关键帧(@keyframes)编写动画函数（可设置from to） 将函数绑定在元素上， 然后设置相关属性
+
+
+·	10：css3多列
+	11：css3用户界面
+	12：css图片
+	13：css按钮
+	14：css框大小（box-sizing(content-size border-size)）
+	15：css3弹性盒子（Flex Box）弹性容器（display:flex/inline-flex）flex-direction flex-wrap flex-flow ...
+	16：媒体查询 @media
+	@media 媒体类型 and (媒体特性) ｛样式代码｝
+	@media screen and (max-width:1024px) and (min-width:300px){
+    div{color:red;}
+}
+
+
+
+静态布局()
+百分比宽度布()
+流式布局()
+自适应(为不同的屏幕分辨率定义布局，即创建多个静态布局),
+三：响应式布局：意在实现不同屏幕分辨率的终端上浏览网页的不同展示方式,流动布局，不使用绝对宽度，字体大小，图片的自适应
+	Meta 
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
+user-scalable属性能够解决ipad切换横屏之后触摸才能回到具体尺寸的问题。
+	Media (
+@media only screen and (min-width: 768px) and (max-width: 1024px) {}
+)
+	响应式布局和响应式内容（图片、多媒体）。
+   1.响应式布局
+           1.Meta标签定义
+           2.使用Media Queries适配对应样式
+        2.响应式内容
+            1.响应式图片  
+
+
+
+⊕响应式不只是技术的实现，它更像是一种对于设计的全新思维模式
+　　⊕浏览的体验短期内还无法超越原生应用
+　　⊕左手操作习惯的交互
+　　⊕Webapp的消息推送
+　　⊕调用本地文件系统的能力弱
+　　⊕响应式图片的解决方案
+　　⊕对PC事件的兼容
+　　⊕WebAPP页面体积的响应式适配
+　　⊕代码实现和内容可维护性之间的权衡
+　　⊕控制设计开发成本
+
+
+
+四：标签默认样式：
+	<a>标签有默认文字修饰：下划线，　去除：text-decoration:none
+	<ul><ol>默认列表样式：list-style:none;有默认内外边距：margin:0;padding:0;
+	<dl><dd>有默认外边距：margin:0;
+	body默认有外边框，
+	p标签默认有上下外边距，（下外边距会跟其他块 的上边距叠压，叠压后的外边距是2者的最大值。）
+	h1,h2,h3,h4,h5,h6,全部由默认外边框，页面上的文字大小不相同
+	a包起来的图片，在ie6下回多出来一圈border边框。　img{border:none;}
+	button按钮
+	<input>标签
+（
+　body.p,h1,h2,h3,h4,h5,h6,dl,dd{margin:0;font-size:12px;font-family:XX;}
+
+　　ol,ul{list-style:none;padding:0;margin:0;}
+
+　　img{border:none;}
+
+　　a{text-decoration:none;}
+input, button, select, textarea {
+outline: none;去掉chrome浏览器自带的点击input框出现边框情况
+-webkit-appearance: none;去掉按钮样式
+border-radius: 0;去掉圆角
+	}
+）
+
+-------------------------------------------------
+五：原理：
+	1:float:导致父级盒子塌陷，它浮动脱离文档流，不占宽高（解决：设宽高，加子div 伪元素  overflow：hidden 父浮动。。。）
+
+	2:clear:both：忽略兄弟节点的float,(它改占啥宽高就占啥)，自己不浮动
+
+	3:子元素margin影响父元素： 所有毗邻的两个或更多盒元素的margin将会合并为一个margin共享之（嵌套也是毗邻）{1、修改父元素的高度，增加padding-top样式模拟（padding-top：1px；常用） 
+2、为父元素添加overflow：hidden；样式即可（完美） 
+3、为父元素或者子元素声明浮动（float：left；可用） 
+4、为父元素添加border（border:1px solid transparent可用） 
+5、为父元素或者子元素声明绝对定位}(CSS2.1规定浮动元素和绝对定位元素不参与Margin折叠)
+	
+	4:	文档加载的同时并行的加载CSS文件以及图片,
+		下载JS文件的时候，会阻塞页面上的其他活动,
+		JS前面出现的CSS文件需要加载、解析完后才会执行后面的内嵌JS，而内嵌JS又会阻塞后面的内容.
+		(因为单线程，以及html是按顺序解析的
+第一种因为你的css在前，所以要先下载，解析
+第二种因为在后面，所以先看到了文字，才去下载解析js和css
+这也是为什么大家说要把css放在head中，js放在底部，我们希望用户看到界面的时候是有样式的，同时也不希望js的下载和执行阻塞用户看到页面的时间)
+
+	5:在设置img图片时，图片默认的display为inline-block，会在容器下方，留一条线(display：block，vertical－align:bottom)图片之间会有一条缝（display：inline-block元素就是有缝隙,回车造成，同一行就没有，分行写就有（是在父元素上设置font-size=0或者对.big_pig img添加float left。））

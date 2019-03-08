@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>柱状图</title>
+	<script type="text/javascript" src="./echarts.common.min.js"></script>
+<!-- 	<script type="text/javascript" src="./index.js"></script> -->
+</head>
+<body>
+	<div class="container">
+		<div class="title">
+			<div></div>
+			<div class="title-cont">投资完成进度</div>
+			<div></div>
+		</div>
+		<div class="main-title-top">
+			<div class="title-item">
+				<div class="title-item-left">
+					<div class="item-left-top">完成进度</div>
+					<div class="item-left-bottom">83.2%</div>
+				</div>
+				<div class="title-item-right" style="width: 50px;height:50px;" id="item">
+					
+				</div>
+			</div>
+			<div class="title-item">
+				<div class="title-item-left">
+					<div class="item-left-top">完成进度</div>
+					<div class="item-left-bottom">83.2%</div>
+				</div>
+				<div class="title-item-right" style="width: 50px;height:50px;" id="item1">
+					
+				</div>
+			</div>
+			<div class="title-item">
+				<div class="title-item-left">
+					<div class="item-left-top">完成进度</div>
+					<div class="item-left-bottom">83.2%</div>
+				</div>
+				<div class="title-item-right" style="width: 50px;height:50px;" id="item2">
+					
+				</div>
+			</div>
+		</div>
+		<div id="main" style="width: 1000px;height:400px;">
+		</div>
+		<div class="main-title">
+			建安投资
+		</div>
+	</div>
+</body>
+  <script type="text/javascript">
+        
+var myChart = echarts.init(document.getElementById('main'));
+
+
+var option = {
+    // title: {
+    //             text: 'ECharts 入门示例'
+    //         },
+    tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    legend: {
+        data:['计划投资金额','累计完成金额'],
+         textStyle:{                 //----图例内容样式
+                    color:'#fff',               //---所有图例的字体颜色
+                },      
+    },
+    grid: {
+        left: '10%',
+        right: '10%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis : [
+        {
+            type : 'category',
+            data : ['仁沐析','绵九','乐西','资潼','沿江','泸黄'],
+             axisLabel: {
+            color: function (value) {
+                return value == '' ? 'green' : '#ffffff';
+            	}
+        	},
+        	splitLine: {
+                show: true, 
+                //  改变轴线颜色
+                lineStyle: {
+                    // 使用深浅的间隔色
+                    color: ['rgb(6,52,149)']
+                }                            
+        	},
+
+        },
+
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min:0,
+            max:12000,
+            axisLabel: {
+            color: function (value) {
+                return value == '' ? 'green' : '#ffffff';
+            	}
+        	},
+        	splitLine: {
+                show: true, 
+                //  改变轴线颜色
+                lineStyle: {
+                    // 使用深浅的间隔色
+                    color: ['rgb(6,52,149)']
+                }                            
+        	},
+            
+        }
+    ],
+    series : [
+        {
+            name:'计划投资金额',
+            //设置柱子的宽度
+            barWidth : 30,
+            color:'rgb(249,134,104)',
+            type:'bar',
+            barWidth:'20',
+	        itemStyle: {//柱样式
+	          normal: {
+	          	barBorderRadius:[30,30,0,0]
+	          }
+	        },            //---柱形宽度
+            barCategoryGap:'20%',       //---柱形间距
+            data:[2200, 11102, 2100, 1700, 5100, 3030]
+        },
+        {
+            name:'累计完成金额',
+            barWidth : 30,
+            color:'rgb(15,205,220)',
+            type:'bar',
+            barWidth:'20',
+            itemStyle: {//柱样式
+	          normal: {
+	          	barBorderRadius:[30,30,0,0]
+	          }
+	        },              //---柱形宽度
+            barCategoryGap:'20%',       //---柱形间距
+            data:[1700, 5200, 1860, 1026, 1279, 1870],
+            
+        },
+
+       
+    ]
+};
+
+myChart.setOption(option);
+
+
+
+var myChart1 = echarts.init(document.getElementById('item'));
+var myChart2 = echarts.init(document.getElementById('item1'));
+var myChart3 = echarts.init(document.getElementById('item2'));
+option1 = {
+    series: [
+        {
+            name:'访问来源',
+            type:'pie',
+            selectedMode: 'single',
+            radius: [0, '30%'],
+
+            label: {
+                normal: {
+                    position: 'inner'
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: false
+                }
+            },
+            data:[
+                {value:335, selected:true},
+                {value:679},
+                {value:1548}
+            ]
+        },
+        {
+            name:'访问来源',
+            type:'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: false,
+            label: {
+                normal: {
+                    show: false,
+                    position: 'center'
+                },
+                emphasis: {
+                    show: false,
+                    textStyle: {
+                        fontSize: '30',
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: false
+                }
+            },
+            data:[
+                {value:335, name:'直接访问'},
+                {value:310, name:'邮件营销'},
+                {value:234, name:'联盟广告'},
+                {value:135, name:'视频广告'},
+                {value:1548, name:'搜索引擎'}
+            ]
+        }
+    ]
+};
+
+myChart1.setOption(option1);
+myChart2.setOption(option1);
+myChart3.setOption(option1);
+
+    </script>
+</html>
+
+
+
+<style type="text/css">
+body{
+	height: 700px;
+	width:1340px;
+	margin: 0px auto;
+	overflow: hidden;;
+}
+.container{
+	height: 100%;
+	width: 100%;
+	background-color: rgb(7,17,76);
+}
+.title{
+
+	height: 50px;
+	width: 100%;
+	background-color: rgb(1,12,91);
+
+}
+.title-cont{
+	height: 50px;
+	width: 150px;
+	line-height: 50px;
+	text-align-last: center;
+	color: #fff;
+	margin: 0px auto;
+	background-color: rgb(4,46,132);
+}
+.main-title-top{
+	display: flex;
+	height: 60px;
+	justify-content:center;
+	margin:10px auto;
+	width: 100%;
+
+}
+.title-item{
+	height: 30px;
+	width: 110px;
+	padding: 10px;
+	margin-right: 30px;	
+	text-align-last: center;
+	background-color: rgb(4,46,132);
+}
+.title-item-left{
+	width: 50%;
+	float: left;
+	color: #ffffff;
+	font-size: 12px;
+}
+.item-left-top{
+	float: left;
+	line-height: 15px;
+	text-align: center;
+}
+.item-left-bottom{
+	float: left;
+	line-height: 15px;
+	text-align: center;
+}
+.title-item-right{
+	width: 50px;
+	height: 50px;
+	margin-top: -10px;
+	float: left;
+}
+#main{
+	margin: 0px auto;
+	padding: 20px;
+	background-color:rgb(4,46,132);
+	width: 600px;
+	height:400px;
+}
+.main-title{
+	width: 100px;
+	text-align: center;
+	height: 50px;
+	line-height: 50px;
+	background-color: rgb(4,46,132);
+	margin: 10px auto;
+	color: #ffffff;
+}
+</style>

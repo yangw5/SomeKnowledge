@@ -1,0 +1,15 @@
+npm install -g typescript
+.ts扩展名
+
+TypeScript 是一种由微软开发的自由和开源的编程语言，它是 JavaScript 的一个超集，扩展了 JavaScript 的语法。遵循最新的ES6规范。
+
+1.类型检查，在TS中允许你为变量指定类型。2.语法提示。3.重构。
+
+compiler(编译器)的作用是把TS代码转换成JS代码;
+
+字符串新特性   参数新特性  函数新特性  表达式和循环  面向对象特性(类（class），泛型（generic）,接口（Interface）,模块（Module）,注解（annotation）) 定义文件（*.d.ts）
+
+
+它提供先进的自动完成，导航和重构工具
+
+getters/setters 
