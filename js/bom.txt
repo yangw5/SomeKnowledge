@@ -1,0 +1,2 @@
+   BOM（Browser Object Model）即浏览器对象模型。  
+	作用:可以移动、调整浏览器大小的window对象，可以用于导航的location对象与history对象，可以获取浏览器、操作系统与用户屏幕信息的navigator与screen对象，可以使用document作为访问HTML文档的入口，管理框架的frames对象等

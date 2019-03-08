@@ -1,0 +1,83 @@
+weex
+    是2016年4月阿里巴巴在Qcon大会上宣布开源的一套跨平台移动开发工具。
+作用：
+解决频繁发版，多端研发
+解决前端语言性能差和显示效果受限
+调试工具：weexplayground
+
+Weex 的结构是解耦的，渲染引擎与语法层是分开的，也不依赖任何特定的前端框架，目前主要支持 Vue.js 和 Rax 这两个前端框架
+ 开发环境搭建
+
+npm install -g weex-toolkit
+weex -v 查看weex版本
+
+Weex init project
+npm install
+npm run server
+npm run dev
+npm install -g weex-toolkit
+
+weex 支持的通用样式
+
+   1.适配与缩略
+
+       （1）weex对于长度值目前只支持像素值，不支持相对单位（em, rem）；适配以750px标准。
+
+       （2）设定边框，border目前不支持类似border: 1px solid #ff0000; 的组合写法。（border-width;border-color;border-style）    
+
+         (3) 设定背景色，background目前不支持类似background: red; 的写法,需要修改为具体的background-color:red; 
+2.定位
+
+（1）weex支持position定位，relative|absolute|fixed|sticky,默认值为relative
+
+（2）weex目前不支持z-index设置元素层级关系。但靠后的元素层级更高，因此，对于层级高的元素，可将其排列在后面。
+
+（3）如果定位元素超过容器便捷，在android下，超出部分将不可见，原因在于android端元素overflow默认值为hidden
+
+3.其余需要注意的地方：
+
+（1）weex支持线性渐变linear-gradient不支持radial-gradient径向渐变。
+
+（2）weex中box-shadow仅仅支持ios
+
+（3）目前<image>组件无法定义一个或几个角的border-radius,只对ios有效，对Android无效。(测试支持 border-top-left-radius: 10px; border-radius： 10px；不支持border-radius: 20px 0 0 20px;这种写法)
+
+（4）weex中，flexbox是默认并且唯一的布局模型，每个元素都默认拥有display:flex属性。（flex-direction:column;垂直方向）
+  
+<a>组件
+weex中a组件定义了指向weex页面打包后的一个js地址
+
+组件中无法添加文本，需要在其中加上text组件才能添加文本
+
+请不要为a组件添加click事件
+
+a组件的超链接文本需要用到text组件
+
+
+<web>组件
+<web>组件用于在页面中嵌入一张网页；src用以指向资源地址,指定src为:src=""
+
+不支持任何子组件
+
+pagestart,<web>组件开始加载时执行,pagestart可以定义为v-on：pagestart = ""(老写法),@pagestart=""(新写法)
+
+pagefinish，<web>组件完成加载时执行，与前面同理
+
+error，<web>组件加载错误时执行，与前面同理
+
+<webview>模块
+
+一系列<web>组件的操作接口。可以通过调用this.$refs.el来获取元素的引用。
+const webview = weex.requireModule('webview')
+API:
+
+1.goBack(webElement)，加载历史记录里的前一个资源地址
+
+2.goForward(webElement),加载历史记录里的下一个资源地址
+
+3.reload(webElement),刷新当前页面
+lg: webview.goBack(this.$refs.el)
+
+
+
+

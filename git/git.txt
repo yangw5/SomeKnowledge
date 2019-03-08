@@ -1,0 +1,209 @@
+首先 在项目根目录里面：
+1:     git init    初始化 会在项目文件里添加一个 .git文件
+2:    git status  查看项目文件状态
+3:    git add .   将文件全部添加到  .git里面
+4:    git commit -m "init my project"  添加git信息
+------------------------------------------------------
+查看用户名
+git config user.name
+修改用户名
+git config --global user.name "your name"
+------------------------------------------------------
+再次提交(传统)
+git add .  提交到暂存区
+ git commit -m "修改1次" 提交到本地仓库
+git pull 拉取代码到本地
+   pull 一次是为了防止再你们协商的时候另一个人给又提交了一版东西,如果真发生了那流程重复一遍,通常没有冲突的时候就直接给你合并了,不会把你的代码给覆盖掉 
+git push 提交到远程仓库
+-------------------------------------------------------
+拉取项目到本地
+1：创建文件夹
+
+2：下载项目 git clone http://xxxxxxxxxxxxxxxxxxxxxxxx
+
+3：初始化 cnpm i
+cnpm i server-dev
+-----------------------------------------------------------
+js-m
+
+-----1
+vscode提交{可视化} 点击
+三个圈 ->填写消息（修改信息）->√ (提交到本地）->更多 ->推送 (提交到gitee)
+
+======================================================
+
+上传到gitee
+
+登录到gitee
+创建项目
+不选择用xxx文件初始化项目（3个都不勾选）
+点击创建
+
+全局设置（设置过了略过）
+git config --global user.name "我只是是码偷"
+git config --global user.email "yangw5@163.com"
+
+密令行运行
+（每个项目有自己的命令）
+已有项目?
+cd existing_git_repo
+git remote add origin https://gitee.com/yangw5/reactproject.git
+git push -u origin master
+======================================================
+上传到github
+	进入目录
+	git init
+	git add .  
+	git commit -m "first commit"
+	git remote add origin https://自己的仓库url地址
+	git push -u origin master
+	输入 github账号密码
+---------------------------------------------------------------------------------
+git remote 查看有远程仓库
+
+
+git gcit:会收集所有松散对象并将它们存入 packfile，合并这些 packfile 进一个大的 packfile，然后将不被任何 commit 引用并且已存在一段时间 (数月) 的对象删除。 此外，Git还会将所有引用 (references) 并入一个单独文件。
+
+git fsck  运行一些仓库的一致性检查
+
+git(分布式版本控制系统,分支管理)
+	工作区 暂存区 版本库
+		电脑可以看到的是 工作区
+		工作区中的隐藏目录.get 是版本库
+		版本库里面 有 stage  是暂存区 (add )
+		还有 master   和 HEAD(commit)
+----------------------------------------------------------------------------------
+集中式版本控制(svn cvs ClearCase VSS)分布式版本控制(git BitKeeper)
+	config --global
+	add
+	commit
+	status 状态信息
+	diff 修改信息
+	HEAD 当前版本
+	HEAD^上一版本
+	reset 回退版本
+	log 提交历史
+	checkout -- file 放弃工作区的修改
+	git reset HEAD <file> 放弃暂存区的修改
+	rm 删除
+	bash 退出git编辑 或者 输入q
+	github Git仓库托管服务 SSH加密
+	reflog 操作记录
+	stash
+	git remote：git remote -v要查看远程库的信息
+	pull合并  从远程抓取分支，使用git pull
+	push 推送
+	tag 别名
+分支:
+创建与合并分支
+
+忽略某些文件时，需要编写.gitignore；
+
+.gitignore文件本身要放到版本库里，并且可以对.gitignore做版本管理
+
+
+在版本回退里，你已经知道，每次提交，Git都把它们串成一条时间线，这条时间线就是一个分支。截止到目前，只有一条时间线，在Git里，这个分支叫主分支，即master分支。HEAD严格来说不是指向提交，而是指向master，master才是指向提交的，所以，HEAD指向的就是当前分支。
+通过git  reflog查看版本，通过 git reset --hard 版本号 进行回退
+
+一开始的时候，master分支是一条线，Git用master指向最新的提交，再用HEAD指向master，就能确定当前分支，以及当前分支的提交点：
+
+git-br-initial
+
+每次提交，master分支都会向前移动一步，这样，随着你不断提交，master分支的线也越来越长：
+
+ 当我们创建新的分支，例如dev时，Git新建了一个指针叫dev，指向master相同的提交，再把HEAD指向dev，就表示当前分支在dev上：
+
+git-br-create
+
+你看，Git创建一个分支很快，因为除了增加一个dev指针，改改HEAD的指向，工作区的文件都没有任何变化！
+
+不过，从现在开始，对工作区的修改和提交就是针对dev分支了，比如新提交一次后，dev指针往前移动一步，而master指针不变：
+
+git-br-dev-fd
+
+假如我们在dev上的工作完成了，就可以把dev合并到master上。Git怎么合并呢？最简单的方法，就是直接把master指向dev的当前提交，就完成了合并：
+
+git-br-ff-merge
+
+所以Git合并分支也很快！就改改指针，工作区内容也不变！
+
+合并完分支后，甚至可以删除dev分支。删除dev分支就是把dev指针给删掉，删掉后，我们就剩下了一条master分支：
+
+git-br-rm
+
+真是太神奇了，你看得出来有些提交是通过分支完成的吗？
+
+ 下面开始实战。
+
+首先，我们创建dev分支，然后切换到dev分支：
+
+$ git checkout -b dev
+Switched to a new branch 'dev'
+git checkout命令加上-b参数表示创建并切换，相当于以下两条命令：
+
+$ git branch dev
+$ git checkout dev
+Switched to branch 'dev'
+然后，用git branch命令查看当前分支：
+
+$ git branch
+* dev
+  master
+git branch命令会列出所有分支，当前分支前面会标一个*号。
+
+然后，我们就可以在dev分支上正常提交，比如对readme.txt做个修改，加上一行：
+
+Creating a new branch is quick.
+然后提交：
+
+$ git add readme.txt 
+$ git commit -m "branch test"
+[dev b17d20e] branch test
+ 1 file changed, 1 insertion(+)
+现在，dev分支的工作完成，我们就可以切换回master分支：
+
+$ git checkout master
+Switched to branch 'master'
+切换回master分支后，再查看一个readme.txt文件，刚才添加的内容不见了！因为那个提交是在dev分支上，而master分支此刻的提交点并没有变：
+
+git-br-on-master
+
+现在，我们把dev分支的工作成果合并到master分支上：
+
+$ git merge dev
+Updating d46f35e..b17d20e
+Fast-forward
+ readme.txt | 1 +
+ 1 file changed, 1 insertion(+)
+git merge命令用于合并指定分支到当前分支。合并后，再查看readme.txt的内容，就可以看到，和dev分支的最新提交是完全一样的。
+
+注意到上面的Fast-forward信息，Git告诉我们，这次合并是“快进模式”，也就是直接把master指向dev的当前提交，所以合并速度非常快。
+
+当然，也不是每次合并都能Fast-forward，我们后面会讲其他方式的合并。
+
+合并完成后，就可以放心地删除dev分支了：
+
+$ git branch -d dev
+Deleted branch dev (was b17d20e).
+删除后，查看branch，就只剩下master分支了：
+
+$ git branch
+* master
+因为创建、合并和删除分支非常快，所以Git鼓励你使用分支完成某个任务，合并后再删掉分支，这和直接在master分支上工作效果是一样的，但过程更安全。
+
+小结
+Git鼓励大量使用分支：
+
+查看分支：git branch
+
+创建分支：git branch <name>
+
+切换分支：git checkout <name>
+
+创建+切换分支：git checkout -b <name>
+
+合并某分支到当前分支：git merge <name>
+
+删除分支：git branch -d <name>
+git log --graph命令可以看到分支合并图。
+git无法自动合并分支

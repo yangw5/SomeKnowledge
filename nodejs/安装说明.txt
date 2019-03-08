@@ -1,0 +1,21 @@
+https://www.cnblogs.com/zhouyu2017/p/6485265.html
+
+
+1、下载对应你系统的Node.js版本:https://nodejs.org/en/download/
+在官网下载 选择 next
+ 设置安装地址 选择add to path安装全部 
+2，测试 node -v npm -v 查看安装版本
+
+3、环境配置
+npm config set prefix "D:\Develop\nodejs\node_global"
+npm config set cache "D:\Develop\nodejs\node_cache"
+接下来设置环境变量，关闭cmd窗口，“我的电脑”-右键-“属性”-“高级系统设置”-“高级”-“环境变量”
+
+进入环境变量对话框，在【系统变量】下新建【NODE_PATH】，输入【D:\Develop\nodejs\node_global\node_modules】，
+将【用户变量】下的【Path】修改为【D:\Develop\nodejs\node_global】
+
+4、测试
+配置完后，安装个module测试下，我们就安装最常用的express模块，打开cmd窗口，
+输入如下命令进行模块的全局安装：
+
+npm install express -g     # -g是全局安装的意思

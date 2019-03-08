@@ -1,0 +1,44 @@
+浅谈iOS与H5的交互-JavaScriptCore框架
+JavaScriptCore是苹果Safari浏览器的JavaScript引擎
+JavaScriptCore框架 是一个苹果在iOS7引入的框架，该框架让 Objective-C 和 JavaScript 代码直接的交互变得更加的简单方便
+
+接口：自动化的，安全的，高保真的
+
+JSContext 是JS代码的执行环境
+JSValue 是对 JS 值的包装
+强/弱/虚/软引用
+JavaScript 与 Objective-C 交互主要通过2种方式（
+Block : 第一种方式是使用block，block也可以称作闭包和匿名函数，使用block可以很方便的将OC中的单个方法暴露给JS调用，具体实现我们稍后再说。
+
+JSExport 协议 : 第二种方式，是使用JSExport协议，可以将OC的中某个对象直接暴露给JS使用，而且在JS中使用就像调用JS的对象一样自然。
+）
+
+-----------------------
+Objective-C:是一种简单的计算机语言,扩充C的面向对象编程语言
+Native App开发即我们所称的传统APP开发模式（原生APP开发模式）
+Native App是一种基于智能手机本地操作系统如iOS、Android、WP并使用原生程式编写运行的第三方应用程序
+Web App开发即是一种框架型APP开发模式（HTML5 APP 框架开发模式）
+flexible box弹性布局模块
+
+weex
+
+cordova:是从PhoneGap中抽出的核心代码，  Hybrid App中间件,Apache Cordova是一个开源的移动开发框架。允许你用标准的web技术-HTML5,CSS3和JavaScript做跨平台开发。 应用在每个平台的具体执行被封装了起来，并依靠符合标准的API绑定去访问每个设备的功能，比如说：传感器、数据、网络状态等。
+
+hybride:
+
+(	Native App 
+传统的原生APP开发模式,Android基于Java语言,底层调用Google的API;iOS基于OC或者Swift语言,底层调用Apple官方提供的API。体验最好。
+
+	
+Web App 
+移动端的网站,将页面部署在服务器上,然后用户使用各大浏览器访问。一般泛指SPA(SinglePageApplication)模式开发出的网站。体验最差。
+
+
+	Hybrid App 
+混合开发,由Native通过JSBridge等方法提供统一的API,然后用Html5+JS来写实际的逻辑,调用API,这种模式下,由于Android,iOS的API一般有一致性,而且最终的页面也是在webview中显示,具有跨平台效果。通过各种应用市场安装，但采用Web技术开发。它虽然看上去是一个原生应用，但里面访问的实际上是一个Web应用
+	React Native App 
+Facebook开源的一套新的APP开发方案,使用JS+部分原生语法来实现功能。初次学习成本较高,但是在入门后,经过良好的封装也能够实现大部分的跨平台。而且体验很好。
+)(
+	react和vue都是web端框架，运行在浏览器的。react native和weex是用前端的方法写native app, 即手机应用，能在app store下载的那种，用的是框架自定义的组件。而且具有一次开发，同时生成android、ios、uwp等平台的应用的特点。你只要写一套业务逻辑，具体是怎么生成的是由框架搞定的。
+	react和react native是一家人，vue和weex是一家人。一家人的特点差不多，语法逻辑是一样的
+)

@@ -1,0 +1,5 @@
+
+	不要在选项属性或回调上使用箭头函数，比如 created: () => console.log(this.a) 或 vm.$watch('a', newValue => this.myMethod())。因为箭头函数是和父级上下文绑定在一起的，this 不会是如你所预期的 Vue 实例，经常导致 
+
+	计算属性是基于它们的依赖进行缓存的，，每当触发重新渲染时，调用方法将总会再次执行函数，侦听属性：观察和响应 Vue 实例上的数据变动
+	$event   event.preventDefault()访问原生dom元素

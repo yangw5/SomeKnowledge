@@ -1,0 +1,58 @@
+react知识点:(webpack)
+	react脚手架:create-react-app( npm install -g create-react-app)
+创建项目: create-react-app xxxx(项目名称)
+	(react脚手架还有 react-boilerplate  react-erdux-starter-kit)
+
+
+入口文件:index.js
+
+antd-mobile ui库
+antd是pc端的框架
+
+
+	
+react:	函数式编程
+
+	引入react react-dom 
+	render()
+	jsx 	
+		是React.createElement(component, props, ...children)的语法糖
+		1:不同于js用''字符串转化为html,不用''.用变量保存,返回一个对象()
+		2:{}来属性js表达式
+		3:JSX 代表 Objects,Babel 转译器会把 JSX 转换成一个名为 React.createElement()
+
+	虚拟dom:react dom
+
+	State:状态 state改变重新渲染页面
+
+	Diff算法
+
+	定义组件:函数定义,类定义,组件名称必须以大写字母开头。
+
+	单向数据流:组件无法修改props,props.children
+
+	state 生命周期:
+	
+	propTypes:类型检查 defaultProps:设置 (Flow 是一个针对 JavaScript 代码的静态类型检查器。)(TypeScript 是一门由微软开发的编程语言。 它是 JavaScript 的一个类型超集，包含它自己的编译器 .ts  .tsx)(Reason  Kotlin)
+(构造函数是唯一能够初始化 this.state,e.preventDefault();阻止默认行为)
+	
+函数编写参数:叫调用 bind(this.value)  编写(value.event).
+
+
+		Refs ref
+
+
+
+(
+	refs
+Refs 是 React 提供给我们的安全访问 DOM 元素或者某个组件实例的句柄。
+	展示组件和容器组件
+	类组件和函数式组件
+	状态和属性（state props）
+	受控组件
+
+
+
+)
+
+Fetch

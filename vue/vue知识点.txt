@@ -1,0 +1,119 @@
+渲染函数：render 
+Vue 推荐在绝大多数情况下使用 template 来创建你的 HTML。然而在一些场景中，你真的需要 JavaScript 的完全编程的能力，这就是 render 函数，它比 template 更接近编译器。
+解决 代码冗长 多slot 多锚点 等问题
+原理：虚拟节点
+
+
+嵌套路由
+router-link跳转到a组件
+router-view渲染匹配到的路径
+
+$router.path()
+$router.back(-1)
+
+Promise:
+new Promise(test).then(function (result) {
+    console.log('成功：' + result);
+}).catch(function (reason) {
+    console.log('失败：' + reason);
+});
+
+async的用法，它作为一个关键字放到函数前面，用于表示函数是一个异步函数
+async 函数也是函数，平时我们怎么使用函数就怎么使用它，直接加括号调用就可以了，为了表示它没有阻塞它后面代码的执行，
+async 函数返回的是一个promise 对象
+如果要获取到promise 返回值，我们应该用then 方法，
+你可能注意到控制台中的Promise 有一个resolved，这是async 函数内部的实现原理。如果async 函数中有返回一个值 ,当调用该函数时，内部会调用Promise.solve() 方法把它转化成一个promise 对象作为返回，但如果timeout 函数内部抛出错误呢？ 那么就会调用Promise.reject() 返回一个promise 对象， 这时修改一下timeout 函数
+
+await 关键字
+await 关键字只能放到async 函数里面
+
+
+axios
+Axios 是一个基于 promise 的 HTTP 库，可以用在浏览器和 node.js 中。
+ await 表示等一下，代码就暂停到这里 	
+async 和 await 基于 promise 的。 使用 async 的函数将会始终返回一个 promise 对象。 这一点很重要，要记住，这可能是你遇到的容易犯错的地。
+在使用 await 的时候我们暂停了函数，而非整段代码。
+async 和 await 是非阻塞的。
+你仍然可以使用 Promise 例如 Promise.all()。
+
+
+mock
+生成随机数据，拦截 Ajax 请求 模拟后台数据 实现前后端分离  http://mockjs.com/
+	npm install mockjs
+json  
+	结构(类型 名称)  值
+
+
+vuex用来管理vue的所有组件状态。 
+dispatch：含有异步操作，例如向后台提交数据，写法： this.$store.dispatch('mutations方法名',值)
+commit：同步操作，写法：this.$store.commit('mutations方法名',值)
+
+vuex $store.dispatch
+state 上存放的，说的简单一些就是变量，也就是所谓的状态。没有使用 state 的时候，我们都是直接在 data 中进行初始化的，但是有了 state 之后，我们就把 data 上的数据转移到 state 上去了。当一个组件需要获取多个状态时候，将这些状态都声明为计算属性会有些重复和冗余。
+dispatch：含有异步操作，例如向后台提交数据，写法： this.$store.dispatch('mutations方法名',值)
+
+commit：同步操作，写法：this.$store.commit('mutations方法名',值)
+
+什么是Vuex？
+Vuex是Vue.js应用程序的状态管理模式+库
+
+Vuex就是提供一个仓库，仓库里面放了很多对象。
+state就是数据源存放地
+
+
+
+
+
+
+
+npm i mint-ui --save
+如果你的项目会用到 Mint UI 里较多的组件，最简单的方法就是把它们全部引入。此时需要在入口文件 main.js 中：
+import MintUI from 'mint-ui';
+import 'mint-ui/lib/style.css';
+2. 按需引入
+
+如果你只需要使用某个组件，可以仅引入这个组件，Mint UI 能够保证在代码打包时，与这个组件无关的文件不会出现在最终代码里。比如需要引入 Button 组件，则在 main.js 中：
+
+import Button from 'mint-ui/lib/button';
+import 'mint-ui/lib/button/style.css';
+
+
+
+所有ui组件都提前导入，问题就在于项目体积会很庞大，
+ Mint UI 是一个基于 Vue.js 的移动端组件库。
+
+
+better-scroll
+滑动组件
+better-scroll 是一款重点解决移动端（现已支持 PC 端）各种滚动场景需求的插件。它的核心是借鉴的 iscroll 的实现，它的 API 设计基本兼容 iscroll，在 iscroll 的基础上又扩展了一些 feature 以及做了一些性能优化。
+npm install --save better-scroll
+
+用法
+import BScroll from 'better-scroll'
+ new BScroll('.menu-wrapper'）
+
+scrollY
+
+
+时间格式化 过滤器
+npm install --save /fiters
+
+
+
+安装jq bootstrap
+cnpm install jquery@1.11.3 --save-dev
+npm install bootstrap@3.3.0 --save-dev
+cnpm install bootstrap --save  --save-exact
+将jquery以插件打包，需要为webpack的plugins进行插件设置。
+在build/webpack.base.conf.js文件中，在整个配置对象的末尾增加plugins配置。
+在webpack.base.conf.js中的配置项，可以在dev和build出来的pro版本中都有效。
+下面的配置其实就是变量名的真正指向设置，这样，在页面中对jquery的各种名字的调用就会有效，否则bootstrap跑不起来。
+https://www.cnblogs.com/LO-ME/p/7292635.html
+var webpack=require('webpack');
+plugins: [
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      "windows.jQuery": "jquery"
+    })
+  ],

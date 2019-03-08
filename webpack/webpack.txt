@@ -1,0 +1,15 @@
+webpack
+
+npm i  webpack  -g 全局安装
+npm i  webpack --save-dev 安装到项目依赖中
+
+npm init 初始化项目
+
+cnpm i jquery --save 安装jquery
+
+打包1
+中间加一个 -o 表示输出文件夹output。
+ webpack ./src/page/index/index.js -o ./dist/app.js
+打包2
+要设置成可读性好的怎么办？将mode变为development开发环境即可。
+webpack --mode development ./src/page/index/index.js -o ./dist/app.js

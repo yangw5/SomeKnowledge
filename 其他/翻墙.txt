@@ -1,0 +1,29 @@
+ stackoverflow：是一个程序设计领域的问答网站
+shadowsockets：基于Socks5代理方式的加密传输协议
+蓝灯：突破网络审查的开源软件。
+1：翻墙工具：XX_Net：是GitHub上的开源项目
+	方式：
+	1:网络和共享中心 - 更改适配器设置 - 本地连接（无线网络则找到WLAN或蓝牙网络连接）- 属性，把 IPv6协议 前面的勾去掉，确定。
+	2;// 设置 Teredo 服务器，默认为：win10.ipv6.microsoft.com 
+netsh interface teredo set state enterpriseclient server=default
+
+// 测试 IPv6 连接 
+ping -6 ipv6.test-ipv6.com 
+ping -6 [2001:470:1:18::125]
+
+// 重置 IPv6 配置 
+netsh interface ipv6 reset
+	3:重启系统
+
+
+	4:通过命令ipconfig /all 查看当前网络信息，看到 Teredo Tunneling Pseudo-Interface 有以 2001 开头的IPv6地址即可。 启动IE浏览器，访问 http://test-ipv6.com 或 http://ipv6.test-ipv6.com，如果选项卡 “测试项目” 下面的 “不使用域名的 IPv6 测试” 显示成功，则隧道建立成功。
+	
+	xx-net提供一个chrome的插件：switchOmega，
+
+
+术语:	1：APPid：为COM的一个子键，在这个子键下，对应于每个远程COM DLL/EXE都有一个条目。在每个APPID条目下，保存着你启动远程COM对象时设置的参数集合，包括对象位置、文件名等。
+	4:com：组件对象模型。
+	2：DLL:将程序代码封装成函数,其中包含的也是程序的代码和程序所需的资源(比如图标、对话框、字符串等),DLL中的代码是以 API函数形式出现的，通俗地说，DLL中包含的程序代码都被做成了一个个小模块，应用程序通过按下所需DLL中特定的按钮，来调用DLL中这个按钮所代表的功能
+	3:exe:可执行文件。静态链接是指把要调用的函数或者过程链接到可执行文件中，成为可执行文件的一部分。换句话说，函数和过程的代码就在程序的exe文件中，该文件包含了运行时所需的全部代码。当多个程序都调用相同函数时，内存中就会存在这个函数的多个拷贝，这样就浪费了宝贵的内存资源。
+
+

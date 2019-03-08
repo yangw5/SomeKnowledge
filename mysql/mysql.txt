@@ -1,0 +1,43 @@
+cmd 进入mysql安装目录bin下，输入：
+mysql -u root -p
+在输入密码 即可
+
+show databases显示所有数据库
+
+use 数据库名 :选择特定数据库
+show TABLES：显示特定数据库的内容(表)；
+
+
+解决mysqlcmd 乱码的解决方案:
+
+mysql> set character_set_client=gbk;
+mysql> set character_set_results=gbk;
+
+创建数据库
+CREATE DATABASE `myajax` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+（　DEFAULT CHARACTER SET utf8：数据库字符集。设置数据库的默认编码为utf8，这里utf8中间不要"-"；
+COLLATE utf8_general_ci:数据库校对规则。该三部分分别为数据库字符集、解释不明白、区分大小写。）
+
+选择数据库
+创建表
+CREATE TABLE IF NOT EXISTS `province` (
+  `id` int(11) NOT NULL auto_increment,
+  `code` varchar(6) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=35 ;
+ 
+（ENGINE=InnoDB使用innodb引擎
+DEFAULT CHARSET=utf8 数据库默认编码为utf-8
+AUTO_INCREMENT=1 自增键的起始序号为1）
+查看表结构
+desc tabl_name;
+插入数据
+INSERT  INTO myuser(uname,upassword) VALUES('yang5','123456');
+查询数据
+select *from myuser
+设置外键
+    constraint  foreign key(外键名) references student(关联表主建)  #通过外键创建链接
+Alter Table `ym` Add Constraint `fk_author` Foreign Key (`au_id`) References `author` (`id`);  
+删除外键
+alter tabl_name drop foreign key '外键名'.

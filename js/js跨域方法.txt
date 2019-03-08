@@ -1,0 +1,34 @@
+jsonp
+通过修改document.domain来跨子域
+window.name
+使用HTML5中新引进的window.postMessage方法来跨域传送数据
+////
+有flash、
+在服务器上设置代理页面等跨域方式(config文件夹下的index.js中的dev改成:)(中间层伪装)
+CORS
+web sockets
+
+
+cookie与session
+
+
+浏览器内核
+google Chrome:webkit(开源)->Blink（goodle与opera共同开发）
+ie:Trident
+opera:Presto->webkit->Blink
+safar:webkit（苹果公司开发的内核）
+firefox:Gecko
+
+
+js引擎
+V8
+Chakra
+Carakan
+javascriptcore
+SpiderMonkey
+
+页面加载渲染
+预加载器
+页面渲染优化
+
+并行 并发
