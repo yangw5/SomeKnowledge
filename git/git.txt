@@ -12,7 +12,7 @@ git config --global user.name "your name"
 再次提交(传统)
 git add .  提交到暂存区
  git commit -m "修改1次" 提交到本地仓库
-git pull 拉取代码到本地
+git pull 拉取远程代码到本地
    pull 一次是为了防止再你们协商的时候另一个人给又提交了一版东西,如果真发生了那流程重复一遍,通常没有冲突的时候就直接给你合并了,不会把你的代码给覆盖掉 
 git push 提交到远程仓库
 -------------------------------------------------------
@@ -58,6 +58,10 @@ git push -u origin master
 	git remote add origin https://自己的仓库url地址
 	git push -u origin master
 	输入 github账号密码
+
+克隆：
+git remote add origin（远程仓库）
+clone (克隆)
 ---------------------------------------------------------------------------------
 git remote 查看有远程仓库
 
@@ -75,20 +79,21 @@ git(分布式版本控制系统,分支管理)
 ----------------------------------------------------------------------------------
 集中式版本控制(svn cvs ClearCase VSS)分布式版本控制(git BitKeeper)
 	config --global
-	add
-	commit
+	add （暂存区）
+	commit（版本库）
 	status 状态信息
-	diff 修改信息
+	diff 修改信息 差异
 	HEAD 当前版本
 	HEAD^上一版本
-	reset 回退版本
+	HEAD ^^ 上上版本
+	reset 回退版本（git reset --hard HEAD^）
+	git reflog（每次命令提交信息列表）
 	log 提交历史
-	checkout -- file 放弃工作区的修改
+	git checkout -- file（丢弃（add commit）工作区的修改）（切换分支）
 	git reset HEAD <file> 放弃暂存区的修改
 	rm 删除
 	bash 退出git编辑 或者 输入q
 	github Git仓库托管服务 SSH加密
-	reflog 操作记录
 	stash
 	git remote：git remote -v要查看远程库的信息
 	pull合并  从远程抓取分支，使用git pull
@@ -96,10 +101,33 @@ git(分布式版本控制系统,分支管理)
 	tag 别名
 分支:
 创建与合并分支
+分支操作（branch checkout -b/d   merge）
+分支合并：确认合并方向，选择切换分支，merge 选择要合并的分支  合并后   push(合并到那个分支 就push到那个分支)
+分支切换后需要pull代码
+切换分支，需先将代码push或者还原
+
+Stashing(仓储)git stash（创建有一个储藏的仓库 将你的修改代码放入到仓库里面，此时的代码是最新代码，不要commit，然后切换分支处理，返回后可以git stash list查看储藏list，通过git stash apply返回
+或者（返回更早git stash apply stash@{2}））
+
 
 忽略某些文件时，需要编写.gitignore；
-
 .gitignore文件本身要放到版本库里，并且可以对.gitignore做版本管理
+
+
+
+
+subtree和submodule(多项目 依赖一个或多个公共的项目{
+cd P1项目的路径  
+git subtree add --prefix=用来放S项目的相对路径 S项目git地址 xxx分支  
+
+cd P1项目的路径  
+git subtree push --prefix=S项目的路径 S项目git地址 xxx分支 
+
+cd P2项目的路径
+git subtree pull --prefix=S项目的路径 S项目git地址 xxx分支  
+}）
+
+
 
 
 在版本回退里，你已经知道，每次提交，Git都把它们串成一条时间线，这条时间线就是一个分支。截止到目前，只有一条时间线，在Git里，这个分支叫主分支，即master分支。HEAD严格来说不是指向提交，而是指向master，master才是指向提交的，所以，HEAD指向的就是当前分支。
@@ -131,7 +159,6 @@ git-br-ff-merge
 
 git-br-rm
 
-真是太神奇了，你看得出来有些提交是通过分支完成的吗？
 
  下面开始实战。
 

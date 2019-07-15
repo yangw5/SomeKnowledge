@@ -1,48 +1,60 @@
-react知识点:(webpack)
+脚手架:(webpack)
 	react脚手架:create-react-app( npm install -g create-react-app)
 创建项目: create-react-app xxxx(项目名称)
 	(react脚手架还有 react-boilerplate  react-erdux-starter-kit)
+	通过creact-react-app搭建项目 项目内部依靠webpack，如果要接管配置，用eject（运行npm run/yarn eject将配置弹到顶层）（creact-react-app版本不同，webpage的配置文件会有所差异）
+相关项目文件：（入口文件:index.js...）
+相关ui库：（antd-mobile ui库，antd是pc端的框架）
+---------
+react知识点
+---------
+jsx
+	是React.createElement(component, props, ...children)的语法糖
+		1：不同于js用''字符串转化为html,不用''，用变量保存,返回一个对象()
+		2:：{}来属性js表达式 className
+		3：SX 代表 Objects,Babel 转译器会把 JSX 转换成一个名为 React.createElement()
+Diff算法与虚拟dom:react dom
 
+react.render() 挂载渲染到页面
 
-入口文件:index.js
+组件（函数/ class，,组件名称必须以大写字母开头。） React.Component constructor super this.state render()   return()  {}
 
-antd-mobile ui库
-antd是pc端的框架
+props(只读)与State:状态 state改变重新渲染页面
 
+state (this.state)  setState()  异步  
 
-	
-react:	函数式编程
+箭头函数 ()=>{}
 
-	引入react react-dom 
-	render()
-	jsx 	
-		是React.createElement(component, props, ...children)的语法糖
-		1:不同于js用''字符串转化为html,不用''.用变量保存,返回一个对象()
-		2:{}来属性js表达式
-		3:JSX 代表 Objects,Babel 转译器会把 JSX 转换成一个名为 React.createElement()
+数据是向下流动的 ，组件无法修改props,props.children
 
-	虚拟dom:react dom
+事件处理 onClick={}   e.preventDefault(); 
 
-	State:状态 state改变重新渲染页面
+函数传递参数   (e) => this.deleteRow(id, e)   this.deleteRow.bind(this, id)
 
-	Diff算法
+条件渲染
 
-	定义组件:函数定义,类定义,组件名称必须以大写字母开头。
+列表&key  .map（）
 
-	单向数据流:组件无法修改props,props.children
+表单  value setState
 
-	state 生命周期:
-	
-	propTypes:类型检查 defaultProps:设置 (Flow 是一个针对 JavaScript 代码的静态类型检查器。)(TypeScript 是一门由微软开发的编程语言。 它是 JavaScript 的一个类型超集，包含它自己的编译器 .ts  .tsx)(Reason  Kotlin)
+状态提升 state移动到父组件上去实现同时刷新
+
+组合继承  类似于插槽
+
+import
+
+避免不必要的嵌套  React.Fragment
+
+lazy
+
+state 生命周期:  constructor()  render()（compenetwill/didmount）  shouldComponentUpdate()   componentDidUpdate()
+
+propTypes:类型检查 defaultProps:设置 (Flow 是一个针对 JavaScript 代码的静态类型检查器。)(TypeScript 是一门由微软开发的编程语言。 它是 JavaScript 的一个类型超集，包含它自己的编译器 .ts  .tsx)(Reason  Kotlin)
 (构造函数是唯一能够初始化 this.state,e.preventDefault();阻止默认行为)
 	
 函数编写参数:叫调用 bind(this.value)  编写(value.event).
 
-
-		Refs ref
-
-
-
+Refs ref
 (
 	refs
 Refs 是 React 提供给我们的安全访问 DOM 元素或者某个组件实例的句柄。
@@ -50,9 +62,17 @@ Refs 是 React 提供给我们的安全访问 DOM 元素或者某个组件实例的句柄。
 	类组件和函数式组件
 	状态和属性（state props）
 	受控组件
-
-
-
 )
 
-Fetch
+重点：受控输入和非受控输入  展示组件和容器组件  单向数据流（解耦）
+
+---------
+react相关依赖工具
+---------
+redux:  store（object tree）（createStore(reducer)） action(惟一改变 state 的办法是触发 action，一个描述发生什么的对象)     reducers(为了描述 action 如何改变 state 树)
+相关API 是 { subscribe, dispatch, getState }。(单一数据源。state只读。使用纯函数来执行修改)
+store.dispatch() 将 action 传到 store。object.assign({},store,newobject)   {...store,...newobject}  combineReducers整合reducers
+
+
+react-dom 的 package 提供了可在应用顶层使用的 DOM（DOM-specific）方法，
+
