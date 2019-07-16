@@ -1,12 +1,17 @@
 1：es6:
-	块级作用域（全局作用域 函数作用域 变量提升 暂时性死区 ），let conset涉及到块级作用域。作用：防止内存泄露，防止内层变量覆盖外层变量。
+	*块级作用域（全局作用域 函数作用域 变量提升 暂时性死区 ），let const涉及到块级作用域。作用：防止内存泄露，防止内层变量覆盖外层变量。
+	const并不是变量的值不能变动，而是指向变量的内存地址所保存的数据不得变动。简单数据类型和复合数据类型是不同的表现形式。
 
-	结构赋值,解析结构
+	*结构赋值,解析结构（模式匹配，数组的解构赋值，对于 有Iterator 接口都可以进行数组的解构赋值 默认值 按顺序）（对象的解构赋值  注意代码块）（字符串的解构赋值）
 
-	字符串:Unicode表示法，字符串拼接，中间添加变量 用 ` ${ xxx }  `  即可，${主体}，其中主体可以是表达式、运算、对象属性还可以是函数，若是字符串将直接输出该字符串。for..of    for...in ...   includes(); startsWith();endsWith()
+	字符串:Unicode表示法，字符串拼接，中间添加变量 用 ` ${ xxx }  `  即可，${主体}，其中主体可以是表达式、运算、对象属性还可以是函数，若是字符串将直接输出该字符串。for..of    for...in ...   includes(); startsWith();endsWith() repeat(number) padStart padEnd trim(trimStart()和trimEnd())
+	
+	正则表达：RegExp 构造函数，字符串对象共有 4 个方法，可以使用正则表达式：match()、replace()、search()和split()。	
+	
+	数值：Number.parseInt(), Number.parseFloat() Number.isInteger() isNaN 
 
 	函数：函数调用： 函数名`参数`  箭头函数 定义函数时设置初始值 () =>{} 
-没有this,this指向父级 无法用call/apply/bind来改变this指向,this在严格模式下也不会指向window,1、箭头函数没有this，函数内部的this来自于父级最近的非箭头函数，并且不能改变this的指向。 2、箭头函数没有super 3、箭头函数没有arguments 4、箭头函数没有new.target绑定。 5、不能使用new 6、没有原型 7、不支持重复的命名参数。 函数默认参数(x=10,...)
+	没有this,this指向父级 无法用call/apply/bind来改变this指向,this在严格模式下也不会指向window,1、箭头函数没有this，函数内部的this来自于父级最近的非箭头函数，并且不能改变this的指向。 2、箭头函数没有super 3、箭头函数没有arguments 4、箭头函数没有new.target绑定。 5、不能使用new 6、没有原型 7、不支持重复的命名参数。 函数默认参数(x=10,...)
 
 	数组的扩展：扩展(展开)运算符：...     函数，数组，字符串接口对象都可使用。
 	数组方法：
@@ -52,5 +57,21 @@ promise.then(success()).catch(error()).finally(function(){});Generator的语法糖。
 	垃圾回收机制：应用计数 和 标记清除。内存泄露：不在用的内存没有及时的被释放
 
 
+相等is
+合并拷贝：assign(浅拷贝)
+对象的简介属性表示   filter（移除不符合的项）   concat() 方法用于连接两个或多个数组。 key()返回键名数组 assign
+
+前端sdk  JS"注入"实现的一大堆API接口
+raven.js（性能监测和告警的解决方案） captureExceptio对错误拦截处理与	sentry一起使用
+（sentry的Raven.js外，还有腾讯的badjs，淘宝的JSTracker，阿里巴巴的FdSafe，支付宝的saijs等）
+axios: 引入，
+new FormData()
+
 优化:缓存与懒加载
 xss:跨站脚本攻击
+	
+http://localhost:3006/#/app/material/variety/info/163193?configType=variety
+
+http://localhost:3006/#/app/material/videoringtones/1
+http://test.karakal.com.cn:18089/mls/mzkweb/index.html#/app/material/album/1115340737
+
