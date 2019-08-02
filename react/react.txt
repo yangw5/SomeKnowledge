@@ -81,3 +81,4 @@ PureComponent与Component
 
 ------------------------
 react props和state都会导致页面更新，如果state依赖于props，与state直接相关的数据视图会在state更新导致的重新渲染更新。
+useEffect会根据props和state的更新而触发，所以有必要加第二个参数控制，不加第二个参数eslint也会提示，第二个参数为[]，和didMount函数一致，触发一次，第二个参数为某个依赖，比如[props.a]，当props.a变化时，useEffect会触发
